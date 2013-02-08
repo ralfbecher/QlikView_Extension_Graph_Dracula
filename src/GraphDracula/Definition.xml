@@ -1,0 +1,13 @@
+<ExtensionObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Definition.xsd" Label="Graph Dracula" Description="Graph Dracula" PageHeight="20000">
+	<Dimension Label="Node 1 ID" Initial="Node1_ID" DropTarget="Node1_ID" />
+	<Dimension Label="Node 1 Type" Initial="Node1_Type" DropTarget="Node1_Type" />
+	<Dimension Label="Node 1 Label" Initial="Node1_Label" DropTarget="Node1_Label" />
+	<Dimension Label="Node 2 ID" Initial="Node2_ID" DropTarget="Node2_ID" />
+	<Dimension Label="Node 2 Type" Initial="Node2_Type" DropTarget="Node2_Type" />
+	<Dimension Label="Node 2 Label" Initial="Node2_Label" DropTarget="Node2_Label" />
+	<Measurement Label="Relation Label" Initial="concat(Label,'\n')" />
+	<Measurement Label="Measurement" Initial="count(Label)" />
+	<Measurement Label="Node 1 Color" Initial="color(1)" />
+	<Measurement Label="Node 2 Color" Initial="color(2)" />
+	<Measurement Label="Relation Color" Initial="lightgray()" />
+</ExtensionObject>

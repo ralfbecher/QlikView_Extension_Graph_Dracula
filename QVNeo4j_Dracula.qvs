@@ -1,0 +1,72 @@
+﻿///$tab Main
+SET ThousandSep='.';
+SET DecimalSep=',';
+SET MoneyThousandSep='.';
+SET MoneyDecimalSep=',';
+SET MoneyFormat='#.##0,00 €;-#.##0,00 €';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='DD.MM.YYYY';
+SET TimestampFormat='DD.MM.YYYY hh:mm:ss[.fff]';
+SET MonthNames='Jan;Feb;Mrz;Apr;Mai;Jun;Jul;Aug;Sep;Okt;Nov;Dez';
+SET DayNames='Mo;Di;Mi;Do;Fr;Sa;So';
+
+///////////////////////////////////////////////////////////////////////////
+//
+// Neo4j QlikView example provided by Ralf Becher, TIQ Solutions GmbH
+//
+// contact: ralf.becher@tiq-solutions.de
+//
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+// connect Neo4j graph database via JDBC:
+//
+// (see also: http://neo4j.org)
+///////////////////////////////////////////////////////////////////////////
+//CUSTOM CONNECT TO "Provider=JDBCConnector_x64.dll;jdbc:neo4j://localhost:7474/?connector.driverClass=org.neo4j.jdbc.Driver;XUserId=MfJbFYD;XPassword=IYRXBVD;";
+CUSTOM CONNECT TO "Provider=JDBCConnector_x64.dll;jdbc:neo4j://localhost:7474/;XUserId=MfJbFYD;XPassword=IYRXBVD;";
+
+///////////////////////////////////////////////////////////////////////////
+// the following queries are made with Neo4j's Cypher Query Language:
+//
+// (see also: http://docs.neo4j.org/chunked/1.7/cypher-query-lang.html)
+///////////////////////////////////////////////////////////////////////////
+
+// read all nodes:
+Nodes:
+LOAD * Where Match(NodeType, 'Actor', 'Director', 'Movie') > 0;
+LOAD NodeID, NodeText, Mid(NodeType, FindOneOf(NodeType, '.', -1) +1) as NodeType, 
+NodeName, Biography, Birthplace, Date(Floor(ConvertToLocalTime(Date(MakeDate(1970, 1, 1) + (Birthday / 86400000)), 'GMT+01:00'))) as Birthday, 
+MovieTitle, 
+Date(Floor(ConvertToLocalTime(Date(MakeDate(1970, 1, 1) + (MovieReleaseDate / 86400000)), 'GMT+01:00'))) as MovieReleaseDate,
+MovieDescription,
+MovieStudio;
+SQL START n=node(*) 
+RETURN ID(n) as NodeID, n as NodeText, n.__type__? as NodeType, n.name? as NodeName, 
+n.biography? as Biography, n.birthplace? as Birthplace, n.birthday? as Birthday, n.title? as MovieTitle, 
+n.releaseDate? as MovieReleaseDate, n.description? as MovieDescription, n.studio? as MovieStudio;
+
+// read all relationships:
+Relationships:
+LOAD RelID, RelText, Mid(RelType, FindOneOf(RelType, '.', -1) +1) as RelType, 
+RelName, RelLabel;
+SQL START r=relationship(*) 
+WHERE type(r) = 'ACTS_IN' or type(r) = 'DIRECTED'
+RETURN ID(r) as RelID, r as RelText, r.__type__? as RelType, r.name? as RelName, type(r) as RelLabel;
+
+// read the relationships for all nodes (the graph):
+Graph:
+SQL START n=node(*) 
+MATCH n-[r]->m 
+WHERE type(r) = 'ACTS_IN' or type(r) = 'DIRECTED'
+RETURN ID(r) as RelID, ID(n) as Node1_ID, type(r) as Label, ID(m) as Node2_ID;
+
+// join actor / director nodes:
+LEFT JOIN (Graph) LOAD NodeID as Node1_ID, NodeType as Node1_Type, if(IsNull(NodeName), MovieTitle, NodeName) as Node1_Label,
+Biography as Node1_Biography, Birthplace as Node1_Birthplace, Birthday as Node1_Birthday
+Resident Nodes;
+
+// join movie nodes:
+LEFT JOIN (Graph) LOAD NodeID as Node2_ID, NodeType as Node2_Type, if(IsNull(NodeName), MovieTitle, NodeName) as Node2_Label, 
+MovieReleaseDate as Node2_ReleaseDate, MovieDescription as Node2_Description, MovieStudio as Node2_Studio 
+Resident Nodes;
