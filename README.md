@@ -1,4 +1,4 @@
 QlikView_Extension_Graph_Dracula
 ================================
 
-Graph Visualization Extension Object for QlikView based on Graph Dracula JavaScript Library
+Graph Data Visualization Extension Object for QlikView based on Graph Dracula JavaScript Library
