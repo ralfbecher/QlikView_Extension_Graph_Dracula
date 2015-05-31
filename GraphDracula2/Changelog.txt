@@ -1,3 +1,0 @@
-2013-02-08 - Initial Release
-2013-06-03 - Node-Selection / native Tooltips  
-2013-06-04 - Multiline Tooltips

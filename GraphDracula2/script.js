@@ -2,13 +2,12 @@
 
 Graph Visualization Extension Object for QlikView based on Dracula Graph Library (JavaScript): http://www.graphdracula.net/
 
-Created by Ralf Becher - ralf.becher@tiq-solutions.de - TIQ Solutions, Leipzig, Germany
-
+Created by Ralf Becher - ralf.becher@web.de - (c) 2015 irregular.bi, Leipzig, Germany
 Tested on QV 11.0, 11.2
 
-TIQ Solutions takes no responsbility for any code.
-Use at your own risk. */
-
+irregular.bi takes no responsibility for any code.
+Use at your own risk. 
+*/
 (function () {
     var path = "Extensions/GraphDracula2/";
     Qv.LoadExtensionScripts([path + 'raphael.js', path + 'dracula_graffle.js', path + 'dracula_graph.js'], function () {
