@@ -1,0 +1,35 @@
+<ExtensionObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 Type="object"
+                 Label="Graph Dracula v2" 
+		             Path="GraphDracula2"
+                 Description="Graph Dracula v2" 
+                 PageHeight="2000"
+                 PageWidth="12"
+>
+  <Dimension Label="Parentnode" Initial="Parent" TargetName="Dimension Name"  Width="700px" />
+	<Dimension Label="Childnode" Initial="Child" TargetName="Dimension Name"  Width="600px" />
+  <Measurement Label="Parent Label" Initial="Parent_Label"/>
+  <Measurement Label="Child Label" Initial="Child_Label"/>
+  <Measurement Label="Relation Label" Initial=""/>
+  <Measurement Label="Parent Size" Initial=""/>
+  <Measurement Label="Child Size" Initial=""/>
+  <Measurement Label="Parent Color" Initial=""/>
+  <Measurement Label="Child Color" Initial=""/>
+  <Measurement Label="Edge Color" Initial=""/>
+  <Measurement Label="Parent Tooltip" Initial=""/>
+  <Measurement Label="Child Tooltip" Initial=""/>
+  
+  <Initiate Name="Caption.Text" Value="Graph Dracula v2"/>
+  <Initiate Name="Chart.Expression.0.0.Definition" Value="" />
+  <Initiate Name="Chart.Expression.1.0.Definition" Value="" />
+  <Initiate Name="Chart.Expression.2.0.Definition" Value="" />
+  <Initiate Name="Chart.Expression.3.0.Definition" Value="10" />
+  <Initiate Name="Chart.Expression.4.0.Definition" Value="10" />
+  <Initiate Name="Chart.Expression.5.0.Definition" Value="color(1)" />
+  <Initiate Name="Chart.Expression.6.0.Definition" Value="color(2)" />
+  <Initiate Name="Chart.Expression.7.0.Definition" Value="rgb(200,200,200)" />
+  <Initiate Name="Chart.Expression.8.0.Definition" Value="'Tooltip'" />
+  <Initiate Name="Chart.Expression.9.0.Definition" Value="'Tooltip'" />
+
+
+</ExtensionObject>
