@@ -6,10 +6,10 @@
                  PageHeight="2000"
                  PageWidth="12"
 >
-  <Dimension Label="Parentnode" Initial="Parent" TargetName="Dimension Name"  Width="700px" />
-  <Dimension Label="Childnode" Initial="Child" TargetName="Dimension Name"  Width="600px" />
-  <Measurement Label="Parent Label" Initial="Parent_Label"/>
-  <Measurement Label="Child Label" Initial="Child_Label"/>
+  <Dimension Label="Parentnode" Initial="" TargetName="Dimension Parentnode" />
+  <Dimension Label="Childnode" Initial="" TargetName="Dimension Childnode" />
+  <Measurement Label="Parent Label" Initial=""/>
+  <Measurement Label="Child Label" Initial=""/>
   <Measurement Label="Relation Label" Initial=""/>
   <Measurement Label="Parent Size" Initial=""/>
   <Measurement Label="Child Size" Initial=""/>
@@ -19,9 +19,11 @@
   <Measurement Label="Parent Tooltip" Initial=""/>
   <Measurement Label="Child Tooltip" Initial=""/>  
   <Initiate Name="Caption.Text" Value="Graph Dracula v2"/>
-  <Initiate Name="Chart.Expression.0.0.Definition" Value="" />
-  <Initiate Name="Chart.Expression.1.0.Definition" Value="" />
-  <Initiate Name="Chart.Expression.2.0.Definition" Value="" />
+  <Initiate Name="Chart.Dimension.0.Field" Value="Parent_Node" />
+  <Initiate Name="Chart.Dimension.1.Field" Value="Child_Node" />
+  <Initiate Name="Chart.Expression.0.0.Definition" Value="Parent_Label" />
+  <Initiate Name="Chart.Expression.1.0.Definition" Value="Child_Label" />
+  <Initiate Name="Chart.Expression.2.0.Definition" Value="Relation_Label" />
   <Initiate Name="Chart.Expression.3.0.Definition" Value="10" />
   <Initiate Name="Chart.Expression.4.0.Definition" Value="10" />
   <Initiate Name="Chart.Expression.5.0.Definition" Value="color(1)" />
